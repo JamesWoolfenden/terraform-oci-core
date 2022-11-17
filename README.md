@@ -33,13 +33,16 @@ module "core" {
 <!-- BEGINNING OF PRE-COMMIT-TERRAFORM DOCS HOOK -->
 ## Requirements
 
-No requirements.
+| Name | Version |
+|------|---------|
+| <a name="requirement_terraform"></a> [terraform](#requirement\_terraform) | >=0.14.8 |
+| <a name="requirement_oci"></a> [oci](#requirement\_oci) | 4.100.0 |
 
 ## Providers
 
 | Name | Version |
 |------|---------|
-| <a name="provider_aws"></a> [aws](#provider\_aws) | n/a |
+| <a name="provider_oci"></a> [oci](#provider\_oci) | 4.47.0 |
 
 ## Modules
 
@@ -49,35 +52,30 @@ No modules.
 
 | Name | Type |
 |------|------|
-| [aws_mq_broker.broker](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/mq_broker) | resource |
-| [aws_mq_configuration.broker](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/mq_configuration) | resource |
-| [aws_security_group.broker](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/security_group) | resource |
+| [oci_core_instance.ubuntu_instance](https://registry.terraform.io/providers/hashicorp/oci/4.100.0/docs/resources/core_instance) | resource |
+| [oci_core_subnet.test_subnet](https://registry.terraform.io/providers/hashicorp/oci/4.100.0/docs/resources/core_subnet) | resource |
+| [oci_core_vcn.test_vcn](https://registry.terraform.io/providers/hashicorp/oci/4.100.0/docs/resources/core_vcn) | resource |
+| [oci_identity_compartment.tf-compartment](https://registry.terraform.io/providers/hashicorp/oci/4.100.0/docs/resources/identity_compartment) | resource |
+| [oci_identity_availability_domains.ads](https://registry.terraform.io/providers/hashicorp/oci/4.100.0/docs/data-sources/identity_availability_domains) | data source |
 
 ## Inputs
 
 | Name | Description | Type | Default | Required |
 |------|-------------|------|---------|:--------:|
-| <a name="input_audit"></a> [audit](#input\_audit) | To enable audit logging | `bool` | `"false"` | no |
-| <a name="input_common_tags"></a> [common\_tags](#input\_common\_tags) | This is to help you add tags to your cloud objects | `map(any)` | n/a | yes |
-| <a name="input_ingress"></a> [ingress](#input\_ingress) | n/a | `list(any)` | n/a | yes |
-| <a name="input_logging"></a> [logging](#input\_logging) | To enable Logging to Cloudwatch | `bool` | `true` | no |
-| <a name="input_maintenance_window_start_time"></a> [maintenance\_window\_start\_time](#input\_maintenance\_window\_start\_time) | Describe the Maintenance window block | `map(any)` | <pre>{<br>  "day_of_week": "MONDAY",<br>  "time_of_day": "12:05",<br>  "time_zone": "GMT"<br>}</pre> | no |
-| <a name="input_mq_broker"></a> [mq\_broker](#input\_mq\_broker) | MQ broker details | `map(any)` | n/a | yes |
-| <a name="input_my_config"></a> [my\_config](#input\_my\_config) | MQ Config | `map(any)` | n/a | yes |
-| <a name="input_password"></a> [password](#input\_password) | n/a | `string` | n/a | yes |
-| <a name="input_security_group_name"></a> [security\_group\_name](#input\_security\_group\_name) | Broker Security group name | `string` | `"Broker"` | no |
-| <a name="input_subnet_ids"></a> [subnet\_ids](#input\_subnet\_ids) | Contains subnet ids | `list(any)` | n/a | yes |
-| <a name="input_username"></a> [username](#input\_username) | n/a | `string` | `"ExampleUser"` | no |
-| <a name="input_vpc_id"></a> [vpc\_id](#input\_vpc\_id) | The VPC id | `string` | n/a | yes |
+| <a name="input_cidr_blocks"></a> [cidr\_blocks](#input\_cidr\_blocks) | n/a | `list` | <pre>[<br>  "10.0.0.0/16"<br>]</pre> | no |
+| <a name="input_image_id"></a> [image\_id](#input\_image\_id) | n/a | `string` | `"ocid1.image.oc1.uk-london-1.aaaaaaaalksmnbf4dqawnwgws665c5eqcygqzn5eviqxosdq3nnuwbdbpimq"` | no |
+| <a name="input_instance_name"></a> [instance\_name](#input\_instance\_name) | n/a | `string` | `"oracle-cloud-jgw-1"` | no |
+| <a name="input_public_key_path"></a> [public\_key\_path](#input\_public\_key\_path) | n/a | `string` | `"/Users/jameswoolfenden/.oci/dodge_public.pem"` | no |
+| <a name="input_subnet_cidr_block"></a> [subnet\_cidr\_block](#input\_subnet\_cidr\_block) | n/a | `string` | `"10.0.0.0/24"` | no |
+| <a name="input_tenancy_ocid"></a> [tenancy\_ocid](#input\_tenancy\_ocid) | n/a | `string` | `"ocid1.tenancy.oc1..aaaaaaaaias5q6dgyfszqcanhgetihg5bri3r6mehrwzier2xs3apa3r2yea"` | no |
+| <a name="input_user_ocid"></a> [user\_ocid](#input\_user\_ocid) | n/a | `string` | `"ocid1.user.oc1..aaaaaaaamvmqbxgd5ul6ji5i5exf3xmx3uhjdht6zqcnqri7pjxlzhurto4a"` | no |
 
 ## Outputs
 
 | Name | Description |
 |------|-------------|
-| <a name="output_broker"></a> [broker](#output\_broker) | The Broker details |
-| <a name="output_configuration"></a> [configuration](#output\_configuration) | The broker configuration |
-| <a name="output_mq_password"></a> [mq\_password](#output\_mq\_password) | MQ password |
-| <a name="output_mq_username"></a> [mq\_username](#output\_mq\_username) | MQ Username |
+| <a name="output_ads"></a> [ads](#output\_ads) | n/a |
+| <a name="output_compartment"></a> [compartment](#output\_compartment) | n/a |
 <!-- END OF PRE-COMMIT-TERRAFORM DOCS HOOK -->
 
 ## Related Projects
@@ -131,4 +129,3 @@ under the License.
 
 [jameswoolfenden_homepage]: https://github.com/jameswoolfenden
 [jameswoolfenden_avatar]: https://github.com/jameswoolfenden.png?size=150
-
