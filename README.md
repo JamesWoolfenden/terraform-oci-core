@@ -1,13 +1,13 @@
-# terraform-aws-activemq
+# terraform-oci-core
 
-[![Build Status](https://github.com/JamesWoolfenden/terraform-aws-activemq/workflows/Verify%20and%20Bump/badge.svg?branch=master)](https://github.com/JamesWoolfenden/terraform-aws-activemq)
-[![Latest Release](https://img.shields.io/github/release/JamesWoolfenden/terraform-aws-activemq.svg)](https://github.com/JamesWoolfenden/terraform-aws-activemq/releases/latest)
-[![GitHub tag (latest SemVer)](https://img.shields.io/github/tag/JamesWoolfenden/terraform-aws-activemq.svg?label=latest)](https://github.com/JamesWoolfenden/terraform-aws-activemq/releases/latest)
+[![Build Status](https://github.com/JamesWoolfenden/terraform-oci-core/workflows/Verify%20and%20Bump/badge.svg?branch=master)](https://github.com/JamesWoolfenden/terraform-oci-core)
+[![Latest Release](https://img.shields.io/github/release/JamesWoolfenden/terraform-oci-core.svg)](https://github.com/JamesWoolfenden/terraform-oci-core/releases/latest)
+[![GitHub tag (latest SemVer)](https://img.shields.io/github/tag/JamesWoolfenden/terraform-oci-core.svg?label=latest)](https://github.com/JamesWoolfenden/terraform-oci-core/releases/latest)
 ![Terraform Version](https://img.shields.io/badge/tf-%3E%3D0.14.0-blue.svg)
-[![Infrastructure Tests](https://www.bridgecrew.cloud/badges/github/JamesWoolfenden/terraform-aws-activemq/cis_aws)](https://www.bridgecrew.cloud/link/badge?vcs=github&fullRepo=JamesWoolfenden%2Fterraform-aws-activemq&benchmark=CIS+AWS+V1.2)
+[![Infrastructure Tests](https://www.bridgecrew.cloud/badges/github/JamesWoolfenden/terraform-oci-core/cis_aws)](https://www.bridgecrew.cloud/link/badge?vcs=github&fullRepo=JamesWoolfenden%2Fterraform-oci-core&benchmark=CIS+AWS+V1.2)
 [![pre-commit](https://img.shields.io/badge/pre--commit-enabled-brightgreen?logo=pre-commit&logoColor=white)](https://github.com/pre-commit/pre-commit)
 [![checkov](https://img.shields.io/badge/checkov-verified-brightgreen)](https://www.checkov.io/)
-[![Infrastructure Tests](https://www.bridgecrew.cloud/badges/github/jameswoolfenden/terraform-aws-activemq/general)](https://www.bridgecrew.cloud/link/badge?vcs=github&fullRepo=JamesWoolfenden%2Fterraform-aws-activemq&benchmark=INFRASTRUCTURE+SECURITY)
+[![Infrastructure Tests](https://www.bridgecrew.cloud/badges/github/jameswoolfenden/terraform-oci-core/general)](https://www.bridgecrew.cloud/link/badge?vcs=github&fullRepo=JamesWoolfenden%2Fterraform-oci-core&benchmark=INFRASTRUCTURE+SECURITY)
 
 Terraform module -
 
@@ -21,19 +21,12 @@ This is a very basic example.
 
 ![alt text](./diagram/message_queue.png)
 
-Include **module.activemq.tf** this repository as a module in your existing Terraform code:
+Include **module.core.tf** this repository as a module in your existing Terraform code:
 
 ```terraform
-module "activemq" {
-  source      = "JamesWoolfenden/activemq/aws"
-  version     = "v0.1.1"
-  common_tags = var.common_tags
-  subnet_ids  = [element(tolist(data.aws_subnet_ids.private.ids), 0)]
-  vpc_id      = element(tolist(data.aws_vpcs.main.ids), 0)
-  mq_broker   = var.mq_broker
-  my_config   = var.my_config
-  username    = "NotAdmin"
-  password    = random_password.password.result
+module "core" {
+  source      = "JamesWoolfenden/core/oci"
+  version     = "v0.1"
 }
 ```
 
@@ -97,13 +90,13 @@ Check out these related projects.
 
 **Got a question?**
 
-File a GitHub [issue](https://github.com/JamesWoolfenden/terraform-aws-activemq/issues).
+File a GitHub [issue](https://github.com/JamesWoolfenden/terraform-oci-core/issues).
 
 ## Contributing
 
 ### Bug Reports & Feature Requests
 
-Please use the [issue tracker](https://github.com/JamesWoolfenden/terraform-aws-activemq/issues) to report any bugs or file feature requests.
+Please use the [issue tracker](https://github.com/JamesWoolfenden/terraform-oci-core/issues) to report any bugs or file feature requests.
 
 ## Copyrights
 
@@ -138,11 +131,4 @@ under the License.
 
 [jameswoolfenden_homepage]: https://github.com/jameswoolfenden
 [jameswoolfenden_avatar]: https://github.com/jameswoolfenden.png?size=150
-[github]: https://github.com/jameswoolfenden
-[linkedin]: https://www.linkedin.com/in/jameswoolfenden/
-[twitter]: https://twitter.com/JimWoolfenden
-[share_twitter]: https://twitter.com/intent/tweet/?text=terraform-aws-activemq&url=https://github.com/JamesWoolfenden/terraform-aws-activemq
-[share_linkedin]: https://www.linkedin.com/shareArticle?mini=true&title=terraform-aws-activemq&url=https://github.com/JamesWoolfenden/terraform-aws-activemq
-[share_reddit]: https://reddit.com/submit/?url=https://github.com/JamesWoolfenden/terraform-aws-activemq
-[share_facebook]: https://facebook.com/sharer/sharer.php?u=https://github.com/JamesWoolfenden/terraform-aws-activemq
-[share_email]: mailto:?subject=terraform-aws-activemq&body=https://github.com/JamesWoolfenden/terraform-aws-activemq
+
